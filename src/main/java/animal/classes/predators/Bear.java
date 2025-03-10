@@ -1,13 +1,8 @@
 package animal.classes.predators;
 
-import animal.classes.CanEat;
-import animal.classes.Predator;
-import controller.Location;
+import controller.Predator;
 
-public class Bear extends Predator implements CanEat {
-    public Bear() {
-        super(new Location());
-    }
+public class Bear extends Predator {
 
     //Медведь,
     @Override

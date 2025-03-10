@@ -1,23 +1,21 @@
-package animal.classes.herbivore;
+package controller;
 
-import controller.Herbivore;
-import controller.Animal;
-import controller.EatPercent;
+import animal.classes.herbivore.Hog;
 
 import java.util.Iterator;
 import java.util.Random;
 
-public class Duck extends Herbivore {
+public class Predator extends Animal implements EatBehavior {
 
-    //Утка,
-    @Override
-    public String toString(){
-        return "\uD83E\uDD86";
+    public Predator() {
+        super(new Location());
+        eatBehavior = this;
     }
 
+
+
     @Override
-    public boolean eat(){
-        super.eat();
+    public boolean eat() {
 
         boolean flag = false;
         Random random = new Random();
@@ -28,6 +26,8 @@ public class Duck extends Herbivore {
             String key = this.getClass().getSimpleName()+"-"+a.getClass().getSimpleName();
             if (random.nextInt(101) < EatPercent.CONSTANT_MAP.get(key)){
                 i.remove();
+                System.out.println(this + "("+this.location.X +","+ this.location.Y + ") съел "
+                        + a +"(" + a.location.X + a.location.Y + ")");
                 a.location.animalInLoc.remove(a);
                 a.setDead(true);
                 flag = true;

@@ -1,12 +1,9 @@
 package animal.classes.herbivore;
 
-import animal.classes.Herbivore;
-import controller.Location;
+import controller.Herbivore;
 
 public class Caterpillar extends Herbivore {
-    public Caterpillar() {
-        super(new Location());
-    }
+
 
     @Override
     public String toString(){

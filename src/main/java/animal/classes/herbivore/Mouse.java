@@ -1,12 +1,8 @@
 package animal.classes.herbivore;
 
-import animal.classes.Herbivore;
-import controller.Location;
+import controller.Herbivore;
 
 public class Mouse extends Herbivore {
-    public Mouse() {
-        super(new Location());
-    }
 
     //Мышь,
     @Override

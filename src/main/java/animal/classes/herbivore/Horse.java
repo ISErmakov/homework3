@@ -1,14 +1,10 @@
 package animal.classes.herbivore;
 
-import animal.classes.Herbivore;
-import controller.Location;
+import controller.Herbivore;
 
 public class Horse extends Herbivore {
-    public Horse() {
-        super(new Location());
-    }
 
-    //Лошадь,
+    //Лошадь
     @Override
     public String toString(){
         return "\uD83D\uDC0E";

@@ -1,5 +1,6 @@
 package controller;
 
+import animal.classes.AnimalFabric;
 import animal.classes.KnownAnimalsSupplier;
 import java.util.*;
 import java.util.function.Supplier;
@@ -7,11 +8,16 @@ import java.util.function.Supplier;
 
 //В мире есть список животных и список локаций в виде графа
 public class World {
+    //список животных
     private final ArrayList<Animal> animals = new ArrayList<>();
+    //список локаций в виде связанного графа
     private final HashMap<Location, ArrayList<Location>> locations;
+
+    //Мир прямоугольной формы З.Ы. Возможно создание иного мира любой формы
     private static int sizeX;
     private static int sizeY;
 
+    //Конструктор прямоугольного мира
     public World(int x, int y, int animalsCount){
 
         //Создаем список локаций в виде графа
@@ -21,20 +27,11 @@ public class World {
 
 
         //Наполняем локации животными
-        Set<Location> locationSet = locations.keySet();
-        ArrayList<Location> locationArrayList = new ArrayList<>(locationSet);
-        ArrayList<Supplier<? extends Animal>> knownAnimals = KnownAnimalsSupplier.getKnownAnimals();
-        Random random = new Random();
-
         for (int i = 0; i < animalsCount; i++) {
-            Animal animal = knownAnimals.get(random.nextInt(knownAnimals.size())).get();
-            animal.location = locationArrayList.get(random.nextInt(locationArrayList.size()));
-            animal.location.animalInLoc.add(animal);
+            //Создаем животных с помощью фабрики
+            Animal animal = AnimalFabric.createAnimal(locations);
             animals.add(animal);
         }
-
-
-
 
     }
 
@@ -80,11 +77,13 @@ public class World {
 
     //Сделать один ход симуляции
     public void makeMove(){
+        //animals.stream().filter(a -> !a.isDead()).forEach();
+        ///animals.stream().filter(Animal::isDead).forEach();
 
         //Травоядные умеют есть траву, хищники пока ничего не умеют
         for (Animal a: animals){
             if (!a.isDead()){
-                a.eat();
+                a.performEat();
             }
         }
 

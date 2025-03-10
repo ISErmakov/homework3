@@ -1,12 +1,8 @@
 package animal.classes.herbivore;
 
-import animal.classes.Herbivore;
-import controller.Location;
+import controller.Herbivore;
 
 public class Buffalo extends Herbivore {
-    public Buffalo() {
-        super(new Location());
-    }
 
     //Буйвол,
     @Override

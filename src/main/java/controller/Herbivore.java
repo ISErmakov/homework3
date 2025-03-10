@@ -1,11 +1,10 @@
-package animal.classes;
+package controller;
 
-import controller.Animal;
-import controller.Location;
+public class Herbivore extends Animal implements EatBehavior {
 
-public class Herbivore extends Animal implements CanEat {
-    public Herbivore(Location loc) {
-        super(loc);
+    public Herbivore() {
+        super(new Location());
+        eatBehavior = this;
     }
 
     @Override
@@ -17,4 +16,5 @@ public class Herbivore extends Animal implements CanEat {
         }
         return false;
     }
+
 }

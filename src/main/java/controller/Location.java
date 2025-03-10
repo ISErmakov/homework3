@@ -19,17 +19,17 @@ public class Location {
     public Location(int x, int y) {
 
         grass = 5;
-
         this.X = x;
         this.Y = y;
         animalInLoc = new ArrayList<>();
     }
 
-    // В локации выводим только количество травы
+    // В локации выводим первое животное
     @Override
     public String toString(){
         if (!animalInLoc.isEmpty()) {return animalInLoc.get(0).toString();}
         return null;
+       // return "("+ X + "," + Y + ")";
     }
 }
 
